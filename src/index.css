@@ -337,6 +337,7 @@ All colors MUST be HSL.
     50% { background-position: 100% 100%; }
     75% { background-position: 0% 100%; }
   }
+}
 
   @keyframes scanlines {
     0% { transform: translateY(-100%); }
@@ -355,5 +356,3 @@ All colors MUST be HSL.
     80% { transform: translate(-15%, 10%); }
     90% { transform: translate(10%, 5%); }
   }
-}
-}
