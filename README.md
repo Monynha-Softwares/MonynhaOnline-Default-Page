@@ -1,73 +1,43 @@
-# Welcome to your Lovable project
+# Monynha Online
 
-## Project info
+Monynha Online é uma landing page estática que apresenta o ecossistema de projetos Monynha.
+Ela é construída com [Vite](https://vitejs.dev/), [React](https://react.dev/) e [Tailwind CSS](https://tailwindcss.com/).
 
-**URL**: https://lovable.dev/projects/34e4e2ba-5857-4e75-a90c-6ae3357d30ad
+## Desenvolvimento
 
-## How can I edit this code?
+1. Instale as dependências:
+   ```sh
+   npm install
+   ```
+2. Inicie o servidor de desenvolvimento:
+   ```sh
+   npm run dev
+   ```
 
-There are several ways of editing your application.
+## Build estático
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/34e4e2ba-5857-4e75-a90c-6ae3357d30ad) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+Gere arquivos prontos para deploy com:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm run build
+```
+Os arquivos finais serão criados na pasta `dist/`. O projeto utiliza `HashRouter`,
+permitindo deploy em qualquer provedor de hospedagem estática sem necessidade de
+configurações adicionais de rotas. Para testar a versão compilada localmente use:
+```sh
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## Estrutura
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `src/` – código fonte em TypeScript
+- `index.html` – ponto de entrada da aplicação
+- `404.html` – redireciona rotas desconhecidas para a aplicação
 
-**Use GitHub Codespaces**
+## Deploy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Basta servir o conteúdo da pasta `dist/` em um servidor estático (por exemplo,
+GitHub Pages, Netlify ou Vercel). Nenhum backend é necessário.
 
-## What technologies are used for this project?
+## Licença
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/34e4e2ba-5857-4e75-a90c-6ae3357d30ad) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Projeto disponibilizado sob a licença MIT.
