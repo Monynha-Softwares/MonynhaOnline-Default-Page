@@ -1,0 +1,129 @@
+import { useLanguage } from "@/hooks/useLanguage";
+import { motion } from "framer-motion";
+import { ExternalLink, Globe, Code, Users, User } from "lucide-react";
+
+const ecosystemSites = [
+  {
+    domain: "monynha.com",
+    icon: Globe,
+    descKey: 'monynhaComDesc' as const,
+    color: "text-primary",
+    bgColor: "bg-primary/10"
+  },
+  {
+    domain: "monynha.tech",
+    icon: Code,
+    descKey: 'monynahTechDesc' as const,
+    color: "text-accent",
+    bgColor: "bg-accent/10"
+  },
+  {
+    domain: "monynha.fun",
+    icon: Users,
+    descKey: 'monynhaFunDesc' as const,
+    color: "text-primary-glow",
+    bgColor: "bg-primary-glow/10"
+  },
+  {
+    domain: "monynha.me",
+    icon: User,
+    descKey: 'monynhaMeDesc' as const,
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-400/10"
+  }
+];
+
+export const EcosystemSection = () => {
+  const { t } = useLanguage();
+
+  return (
+    <section id="ecosystem" className="py-24 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+            {t('ecosystemTitle')}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            {t('ecosystemDescription')}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {ecosystemSites.map((site, index) => (
+            <motion.a
+              key={site.domain}
+              href={`https://${site.domain}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ 
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                y: -10,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="glass-card p-6 group hover:shadow-glow/20 transition-all duration-300 cursor-pointer border border-border/50 hover:border-border"
+            >
+              <div className="text-center">
+                <div className={`w-16 h-16 ${site.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <site.icon className={`h-8 w-8 ${site.color}`} />
+                </div>
+                
+                <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                  {site.domain}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground mb-4">
+                  {t(site.descKey)}
+                </p>
+                
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                  <span>Visitar</span>
+                  <ExternalLink className="h-3 w-3" />
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Marquee Effect */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-16 overflow-hidden"
+        >
+          <div className="flex animate-marquee whitespace-nowrap gap-8 text-sm text-muted-foreground/50">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="flex gap-8">
+                {ecosystemSites.map((site) => (
+                  <span key={`${i}-${site.domain}`} className="inline-block">
+                    {site.domain}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
