@@ -1,0 +1,49 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, prod]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/prod'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run cleanup-lovable
+      - run: npm run format
+      - run: npm run lint
+      - run: npm test
+
+  build:
+    needs: [test]
+    # run build only if previous jobs succeeded
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run cleanup-lovable
+      - run: npm run format
+      - run: npm run lint
+      - run: npm run sitemap
+      - run: npm run build
+      - name: Upload build artifact
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist
