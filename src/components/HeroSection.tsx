@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
+import { CyberGrid } from "./CyberGrid";
+import { CyberButton } from "./CyberButton";
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -11,49 +12,91 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 hero-bg noise" />
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden cyber-bg particles scanlines">
+      {/* Advanced Cyber Grid */}
+      <CyberGrid />
       
-      {/* Floating Elements */}
-      <div className="absolute inset-0">
+      {/* Matrix Rain Effect */}
+      <div className="absolute inset-0 matrix-rain" />
+      
+      {/* 3D Floating Holographic Elements */}
+      <div className="absolute inset-0 transform-3d">
         <motion.div
           animate={{ 
-            y: [0, -20, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{ 
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full blur-sm"
-        />
-        <motion.div
-          animate={{ 
-            y: [0, 30, 0],
-            rotate: [0, -10, 0]
+            y: [0, -30, 0],
+            rotateX: [0, 15, 0],
+            rotateY: [0, -10, 0],
           }}
           transition={{ 
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
+            ease: "easeInOut"
           }}
-          className="absolute top-1/3 right-1/4 w-3 h-3 bg-accent/20 rounded-full blur-sm"
+          className="absolute top-1/4 left-1/4 w-8 h-8 neon-glow rounded-lg transform-3d"
+          style={{
+            background: "var(--gradient-cyber)",
+            filter: "blur(2px)",
+          }}
         />
         <motion.div
           animate={{ 
-            y: [0, -15, 0],
-            x: [0, 10, 0]
+            y: [0, 40, 0],
+            rotateX: [0, -20, 0],
+            rotateY: [0, 15, 0],
+            scale: [1, 1.2, 1],
           }}
           transition={{ 
-            duration: 7,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 4
+            delay: 3
           }}
-          className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-primary-glow/40 rounded-full blur-sm"
+          className="absolute top-1/3 right-1/4 w-12 h-12 hologram-border rounded-full transform-3d"
+        />
+        <motion.div
+          animate={{ 
+            y: [0, -25, 0],
+            x: [0, 20, 0],
+            rotateZ: [0, 180, 360],
+          }}
+          transition={{ 
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 6
+          }}
+          className="absolute bottom-1/3 left-1/3 w-6 h-6 neon-text transform-3d"
+        >
+          <Zap className="w-full h-full" />
+        </motion.div>
+
+        {/* Additional 3D Elements */}
+        <motion.div
+          animate={{ 
+            rotateX: [0, 360],
+            rotateY: [0, -360],
+            scale: [0.8, 1.2, 0.8],
+          }}
+          transition={{ 
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-1/2 right-1/3 w-4 h-4 bg-tertiary/40 rounded-full blur-sm transform-3d"
+        />
+        <motion.div
+          animate={{ 
+            y: [0, -50, 0],
+            rotateY: [0, 180, 360],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{ 
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-1/4 right-1/4 w-10 h-1 bg-gradient-cyber transform-3d"
         />
       </div>
 
@@ -121,29 +164,26 @@ export const HeroSection = () => {
           }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Button
+          <CyberButton
             size="lg"
             onClick={scrollToEcosystem}
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 gap-2 text-lg px-8 py-6"
+            variant="primary"
+            className="gap-2 text-lg"
           >
             {t('exploreCta')}
             <ArrowRight className="h-5 w-5" />
-          </Button>
+          </CyberButton>
 
-          <Button
+          <CyberButton
             variant="ghost"
             size="lg"
-            asChild
-            className="text-muted-foreground hover:text-foreground border border-border/50 hover:border-border transition-all duration-300 px-8 py-6"
+            href="https://admin.monynha.online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg"
           >
-            <a
-              href="https://admin.monynha.online"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('adminCta')}
-            </a>
-          </Button>
+            {t('adminCta')}
+          </CyberButton>
         </motion.div>
       </div>
 

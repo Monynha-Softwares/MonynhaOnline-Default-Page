@@ -1,6 +1,7 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { Server, Zap, Shield, Monitor } from "lucide-react";
+import { HolographicCard } from "./HolographicCard";
 
 const infraFeatures = [
   { icon: Server, label: "Coolify Platform" },

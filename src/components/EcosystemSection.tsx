@@ -1,6 +1,7 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { ExternalLink, Globe, Code, Users, User } from "lucide-react";
+import { HolographicCard } from "./HolographicCard";
 
 const ecosystemSites = [
   {
@@ -67,38 +68,40 @@ export const EcosystemSection = () => {
               href={`https://${site.domain}`}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3, ease: "easeOut" }
-              }}
-              className="glass-card p-6 group hover:shadow-glow/20 transition-all duration-300 cursor-pointer border border-border/50 hover:border-border"
+              className="group cursor-pointer"
             >
-              <div className="text-center">
-                <div className={`w-16 h-16 ${site.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <site.icon className={`h-8 w-8 ${site.color}`} />
-                </div>
+              <HolographicCard delay={index * 0.15} className="text-center h-full">
+                <motion.div 
+                  className="w-20 h-20 rounded-3xl neon-glow flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
+                  style={{
+                    background: "var(--gradient-cyber)",
+                  }}
+                  animate={{
+                    rotateY: [0, 360],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: index * 0.8,
+                  }}
+                >
+                  <site.icon className="h-10 w-10 text-foreground relative z-10" />
+                </motion.div>
                 
-                <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold mb-3 hologram">
                   {site.domain}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-muted-foreground mb-6 leading-relaxed">
                   {t(site.descKey)}
                 </p>
                 
-                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                <div className="flex items-center justify-center gap-2 text-sm neon-text">
                   <span>Visitar</span>
-                  <ExternalLink className="h-3 w-3" />
+                  <ExternalLink className="h-4 w-4" />
                 </div>
-              </div>
+              </HolographicCard>
             </motion.a>
           ))}
         </div>

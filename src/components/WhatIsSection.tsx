@@ -1,6 +1,7 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { CheckCircle, Zap, Shield, BarChart3, GitBranch } from "lucide-react";
+import { HolographicCard } from "./HolographicCard";
 
 const features = [
   { icon: GitBranch, key: 'feature1' as const },
@@ -32,35 +33,56 @@ export const WhatIsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {features.map((feature, index) => (
-            <motion.div
-              key={feature.key}
-              initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.2 }
-              }}
-              className="glass-card p-6 hover:shadow-glow/20 transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
+            <HolographicCard key={feature.key} delay={index * 0.2}>
+              <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-primary/20 flex items-center justify-center">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl neon-glow flex items-center justify-center relative overflow-hidden"
+                    style={{
+                      background: "var(--gradient-cyber)",
+                    }}
+                    animate={{
+                      rotateY: [0, 360],
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: index * 0.5,
+                    }}
+                  >
+                    <feature.icon className="h-8 w-8 text-foreground relative z-10" />
+                    
+                    {/* Holographic shimmer */}
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{
+                        background: "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)",
+                      }}
+                      animate={{
+                        x: ["-100%", "100%"],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: index * 0.3,
+                      }}
+                    />
+                  </motion.div>
                 </div>
                 <div className="flex-1">
-                  <p className="text-foreground leading-relaxed">
+                  <motion.p 
+                    className="text-foreground leading-relaxed text-lg"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
                     {t(feature.key)}
-                  </p>
+                  </motion.p>
                 </div>
               </div>
-            </motion.div>
+            </HolographicCard>
           ))}
         </div>
 

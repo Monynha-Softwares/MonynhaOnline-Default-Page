@@ -2,67 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Monynha Online Design System - Futuristic & Playful
+/* Monynha Online Design System - Ultra Futuristic 3D Experience
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    /* Base Colors */
-    --background: 220 15% 7%;
+    /* Base Colors - Deep Space */
+    --background: 220 25% 3%;
     --foreground: 220 10% 98%;
 
-    /* Glass & Cards */
-    --card: 220 15% 9%;
+    /* Glass & Cards - Holographic */
+    --card: 220 20% 8%;
     --card-foreground: 220 10% 95%;
-    --glass: 220 15% 15%;
+    --glass: 220 25% 12%;
 
     /* Popover */
-    --popover: 220 15% 8%;
+    --popover: 220 20% 6%;
     --popover-foreground: 220 10% 98%;
 
-    /* Brand Colors - Violet/Blue Gradients */
-    --primary: 260 85% 65%;
+    /* Brand Colors - Neon Cyber */
+    --primary: 280 95% 70%;
     --primary-foreground: 220 10% 98%;
-    --primary-glow: 270 90% 75%;
+    --primary-glow: 290 100% 80%;
+    --primary-dark: 280 85% 45%;
 
-    /* Secondary - Softer tones */
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 220 10% 85%;
+    /* Secondary - Cyber Pink */
+    --secondary: 320 90% 65%;
+    --secondary-foreground: 220 10% 98%;
+    --secondary-glow: 330 100% 75%;
 
-    /* Muted */
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 65%;
+    /* Muted - Deep Purple */
+    --muted: 260 30% 15%;
+    --muted-foreground: 220 15% 70%;
 
-    /* Accent - Electric blue */
-    --accent: 200 100% 70%;
-    --accent-foreground: 220 15% 8%;
+    /* Accent - Electric Cyan */
+    --accent: 180 100% 75%;
+    --accent-foreground: 220 20% 8%;
+    --accent-glow: 180 100% 85%;
+
+    /* Tertiary - Neon Green */
+    --tertiary: 120 100% 65%;
+    --tertiary-foreground: 220 20% 8%;
+    --tertiary-glow: 120 100% 75%;
 
     /* Destructive */
-    --destructive: 0 75% 60%;
+    --destructive: 0 85% 65%;
     --destructive-foreground: 220 10% 98%;
 
     /* Borders & Inputs */
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 260 85% 65%;
+    --border: 260 40% 25%;
+    --input: 220 25% 12%;
+    --ring: 280 95% 70%;
 
     /* Border Radius */
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(var(--accent) / 0.8));
-    --gradient-glass: linear-gradient(135deg, hsl(var(--glass) / 0.8), hsl(var(--glass) / 0.4));
+    /* Advanced Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--secondary)));
+    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--primary) / 0.4), hsl(var(--secondary) / 0.3), hsl(var(--accent) / 0.2), transparent);
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass) / 0.9), hsl(var(--primary) / 0.1), hsl(var(--glass) / 0.5));
+    --gradient-cyber: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--tertiary)), hsl(var(--secondary)));
+    --gradient-hologram: linear-gradient(90deg, 
+      hsl(var(--primary) / 0.8) 0%, 
+      hsl(var(--accent) / 0.6) 25%, 
+      hsl(var(--tertiary) / 0.4) 50%, 
+      hsl(var(--secondary) / 0.6) 75%, 
+      hsl(var(--primary) / 0.8) 100%);
     
-    /* Shadows & Effects */
-    --shadow-glow: 0 0 50px hsl(var(--primary) / 0.3);
-    --shadow-glass: 0 8px 32px hsl(220 15% 0% / 0.3);
-    --backdrop-blur: blur(16px);
+    /* Advanced Shadows & Effects */
+    --shadow-glow: 0 0 80px hsl(var(--primary) / 0.5), 0 0 120px hsl(var(--accent) / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 20% 0% / 0.4), inset 0 1px 0 hsl(var(--primary) / 0.1);
+    --shadow-cyber: 0 0 20px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--accent) / 0.6), 0 0 80px hsl(var(--secondary) / 0.4);
+    --shadow-hologram: 0 0 30px hsl(var(--tertiary) / 0.7), inset 0 1px 1px hsl(var(--primary) / 0.3);
+    --backdrop-blur: blur(20px);
+    --backdrop-blur-heavy: blur(40px);
 
-    /* Animation Timing */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* 3D Transforms */
+    --perspective: 1000px;
+    --rotate-x: 0deg;
+    --rotate-y: 0deg;
+    --rotate-z: 0deg;
+
+    /* Animation Timing - More Dynamic */
+    --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-spring: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-cyber: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     /* Sidebar (keeping for compatibility) */
     --sidebar-background: 220 15% 8%;
@@ -105,48 +130,217 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Glass morphism effects */
+  /* Advanced Glass Morphism */
   .glass {
-    @apply bg-glass/80 backdrop-blur-lg border border-white/10;
-  }
-
-  .glass-card {
-    @apply glass rounded-2xl p-6;
+    @apply bg-glass/90 backdrop-blur-xl border border-primary/20;
     box-shadow: var(--shadow-glass);
   }
 
-  /* Gradient text */
-  .gradient-text {
-    background: var(--gradient-primary);
+  .glass-card {
+    @apply glass rounded-3xl p-8;
+    box-shadow: var(--shadow-glass);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-hologram);
+    opacity: 0.6;
+  }
+
+  /* Holographic Effects */
+  .hologram {
+    background: var(--gradient-hologram);
+    background-size: 200% 200%;
+    animation: hologram-shift 3s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Glow effects */
-  .glow {
-    box-shadow: var(--shadow-glow);
+  .hologram-border {
+    border: 2px solid transparent;
+    background: var(--gradient-hologram);
+    background-clip: border-box;
+    animation: hologram-shift 3s ease-in-out infinite;
   }
 
-  /* Hero background pattern */
-  .hero-bg {
-    background: 
-      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.3) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, hsl(var(--primary-glow) / 0.1) 0%, transparent 50%);
+  /* Cyber Grid */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-flow 20s linear infinite;
   }
 
-  /* Animated background noise */
-  .noise::before {
+  /* 3D Transforms */
+  .transform-3d {
+    transform-style: preserve-3d;
+    perspective: var(--perspective);
+  }
+
+  .float-3d {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    animation: float-3d 6s ease-in-out infinite;
+  }
+
+  .tilt-3d {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+    transition: var(--transition-spring);
+  }
+
+  .tilt-3d:hover {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) scale(1.05);
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: var(--shadow-cyber);
+    border: 1px solid hsl(var(--primary) / 0.5);
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 
+      0 0 5px hsl(var(--primary) / 0.8),
+      0 0 10px hsl(var(--primary) / 0.6),
+      0 0 20px hsl(var(--primary) / 0.4);
+  }
+
+  /* Particle Effects */
+  .particles {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particles::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    animation: noise 8s steps(10) infinite;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, hsl(var(--primary) / 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(var(--accent) / 0.4), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(var(--tertiary) / 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsl(var(--secondary) / 0.3), transparent);
+    background-size: 200px 100px;
+    animation: particles-float 15s ease-in-out infinite;
+  }
+
+  /* Advanced Background Effects */
+  .cyber-bg {
+    background: 
+      var(--gradient-hero),
+      radial-gradient(circle at 10% 20%, hsl(var(--primary) / 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, hsl(var(--tertiary) / 0.1) 0%, transparent 50%);
+    position: relative;
+  }
+
+  .matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(transparent 0%, hsl(var(--primary) / 0.1) 50%, transparent 100%);
+    background-size: 2px 200px;
+    animation: matrix-fall 3s linear infinite;
+    opacity: 0.3;
+  }
+
+  /* Gradient Animations */
+  .gradient-text {
+    background: var(--gradient-cyber);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: var(--gradient-cyber);
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease-in-out infinite;
+    padding: 2px;
+    border-radius: var(--radius);
+  }
+
+  .gradient-border > * {
+    background: hsl(var(--background));
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  /* Scanlines Effect */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 0%,
+      hsl(var(--primary) / 0.03) 50%,
+      transparent 100%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 2s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Keyframe Animations */
+  @keyframes hologram-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes grid-flow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  @keyframes float-3d {
+    0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+    25% { transform: translateY(-10px) rotateX(2deg) rotateY(-1deg); }
+    50% { transform: translateY(-5px) rotateX(-1deg) rotateY(2deg); }
+    75% { transform: translateY(-15px) rotateX(1deg) rotateY(-2deg); }
+  }
+
+  @keyframes particles-float {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(-5px); }
+    75% { transform: translateY(-30px) translateX(-10px); }
+  }
+
+  @keyframes matrix-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+  }
+
+  @keyframes scanlines {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
   }
 
   @keyframes noise {
@@ -161,4 +355,5 @@ All colors MUST be HSL.
     80% { transform: translate(-15%, 10%); }
     90% { transform: translate(10%, 5%); }
   }
+}
 }
