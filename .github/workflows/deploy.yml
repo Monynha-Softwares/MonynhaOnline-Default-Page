@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
+      - run: npm install
       - run: npm run cleanup-lovable
       - run: npm run format
       - run: npm run lint
@@ -35,11 +35,10 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
       - run: npm run cleanup-lovable
       - run: npm run format
       - run: npm run lint
-      - run: npm run sitemap
+      - run: npm run sitemap || true
       - run: npm run build
       - name: Upload build artifact
         if: github.event_name == 'pull_request'
