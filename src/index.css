@@ -133,15 +133,15 @@ All colors MUST be HSL.
 @layer components {
   /* Advanced Glass Morphism */
   .glass {
-    background-color: hsl(var(--glass) / 0.9);
-    backdrop-filter: blur(var(--backdrop-blur));
+    background: hsl(var(--glass) / 0.9);
+    backdrop-filter: var(--backdrop-blur);
     border: 1px solid hsl(var(--primary) / 0.2);
     box-shadow: var(--shadow-glass);
   }
 
   .glass-card {
-    background-color: hsl(var(--glass) / 0.9);
-    backdrop-filter: blur(var(--backdrop-blur));
+    background: hsl(var(--glass) / 0.9);
+    backdrop-filter: var(--backdrop-blur);
     border: 1px solid hsl(var(--primary) / 0.2);
     border-radius: var(--radius);
     padding: 2rem;
@@ -363,3 +363,4 @@ All colors MUST be HSL.
     80% { transform: translate(-15%, 10%); }
     90% { transform: translate(10%, 5%); }
   }
+}

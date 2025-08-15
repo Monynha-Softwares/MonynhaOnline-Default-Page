@@ -3,6 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { CyberGrid } from "./CyberGrid";
 import { CyberButton } from "./CyberButton";
+import { QuantumOrb } from "./QuantumOrb";
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -15,6 +16,11 @@ export const HeroSection = () => {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden cyber-bg particles scanlines">
       {/* Advanced Cyber Grid */}
       <CyberGrid />
+      
+      {/* Quantum Orbs */}
+      <QuantumOrb size={300} className="top-20 left-20" delay={0} />
+      <QuantumOrb size={200} className="top-40 right-40" delay={1} />
+      <QuantumOrb size={150} className="bottom-32 left-1/3" delay={2} />
       
       {/* Matrix Rain Effect */}
       <div className="absolute inset-0 matrix-rain" />
