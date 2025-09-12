@@ -19,7 +19,7 @@ export const AdminLogin = () => {
         asChild
       >
         <a
-          href="https://admin.monynha.online"
+          href="https://it.monynha.online"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Admin Login"
