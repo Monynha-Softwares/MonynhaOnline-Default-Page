@@ -94,7 +94,7 @@ const createBlobs = (
   return Array.from({ length: count }, (_, index): BlobState => {
     const color = colors[index % colors.length];
     const baseRadius =
-      maxDimension * (0.24 + (index % colors.length) * 0.015 + Math.random() * 0.08);
+      maxDimension * (0.16 + (index % colors.length) * 0.01 + Math.random() * 0.05);
 
     return {
       x: Math.random() * width,

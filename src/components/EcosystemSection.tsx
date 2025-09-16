@@ -1,32 +1,33 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
 import { ExternalLink, Globe, Code, Users, User } from "lucide-react";
 import { HolographicCard } from "./HolographicCard";
 
 const ecosystemSites = [
   {
-    domain: "monynha.com",
+    ...LINKS.ecosystem.monynhaCom,
     icon: Globe,
     descKey: 'monynhaComDesc' as const,
     color: "text-primary",
     bgColor: "bg-primary/10"
   },
   {
-    domain: "monynha.tech",
+    ...LINKS.ecosystem.monynhaTech,
     icon: Code,
     descKey: 'monynahTechDesc' as const,
     color: "text-accent",
     bgColor: "bg-accent/10"
   },
   {
-    domain: "monynha.fun",
+    ...LINKS.ecosystem.monynhaFun,
     icon: Users,
     descKey: 'monynhaFunDesc' as const,
     color: "text-primary-glow",
     bgColor: "bg-primary-glow/10"
   },
   {
-    domain: "monynha.me",
+    ...LINKS.ecosystem.monynhaMe,
     icon: User,
     descKey: 'monynhaMeDesc' as const,
     color: "text-emerald-400",
@@ -65,7 +66,7 @@ export const EcosystemSection = () => {
           {ecosystemSites.map((site, index) => (
             <motion.a
               key={site.domain}
-              href={`https://${site.domain}`}
+              href={site.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group cursor-pointer"

@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
 import { CyberGrid } from "./CyberGrid";
 import { CyberButton } from "./CyberButton";
@@ -177,7 +178,7 @@ export const HeroSection = () => {
           <CyberButton
             variant="ghost"
             size="lg"
-            href="https://admin.monynha.online"
+            href={LINKS.admin.dashboard}
             target="_blank"
             rel="noopener noreferrer"
             className="text-lg"
