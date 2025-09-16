@@ -7,15 +7,17 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <HeroSection />
-        <WhatIsSection />
-        <EcosystemSection />
-        <InfrastructureSection />
-      </main>
-      <Footer />
+    <div className="relative min-h-screen text-foreground">
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          <WhatIsSection />
+          <EcosystemSection />
+          <InfrastructureSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
