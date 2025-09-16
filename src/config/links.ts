@@ -1,15 +1,14 @@
 export const LINKS = {
   home: "/",
   social: {
-    github: "https://github.com/monynha",
-    twitter: "https://twitter.com/monynha",
+    github: "https://github.com/Monynha-Softwares",
     website: "https://monynha.com",
     about: "https://monynha.com/about",
     contact: "https://monynha.com/contact",
   },
   admin: {
-    dashboard: "https://admin.monynha.online",
-    itPortal: "https://it.monynha.online",
+    dashboard: "https://it.monynha.online",
+    itPortal: "https://it.monynha.online/projects",
   },
   ecosystem: {
     monynhaCom: {
@@ -21,11 +20,11 @@ export const LINKS = {
       url: "https://monynha.tech",
     },
     monynhaFun: {
-      domain: "monynha.fun",
+      domain: "monynha.online",
       url: "https://monynha.fun",
     },
     monynhaMe: {
-      domain: "monynha.me",
+      domain: "docs.monynha",
       url: "https://monynha.me",
     },
   },
