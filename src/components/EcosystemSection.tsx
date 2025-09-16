@@ -46,86 +46,88 @@ export const EcosystemSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            {t('ecosystemTitle')}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('ecosystemDescription')}
-          </p>
-        </motion.div>
+        <div className="rounded-3xl border border-white/10 bg-background/70 backdrop-blur-sm px-8 py-12 shadow-[0_25px_90px_rgba(14,165,233,0.15)]">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              {t('ecosystemTitle')}
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t('ecosystemDescription')}
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {ecosystemSites.map((site, index) => (
-            <motion.a
-              key={site.domain}
-              href={`https://${site.domain}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group cursor-pointer"
-            >
-              <HolographicCard delay={index * 0.15} className="text-center h-full">
-                <motion.div 
-                  className="w-20 h-20 rounded-3xl neon-glow flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
-                  style={{
-                    background: "var(--gradient-cyber)",
-                  }}
-                  animate={{
-                    rotateY: [0, 360],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear",
-                    delay: index * 0.8,
-                  }}
-                >
-                  <site.icon className="h-10 w-10 text-foreground relative z-10" />
-                </motion.div>
-                
-                <h3 className="text-xl font-bold mb-3 hologram">
-                  {site.domain}
-                </h3>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {t(site.descKey)}
-                </p>
-                
-                <div className="flex items-center justify-center gap-2 text-sm neon-text">
-                  <span>Visitar</span>
-                  <ExternalLink className="h-4 w-4" />
-                </div>
-              </HolographicCard>
-            </motion.a>
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {ecosystemSites.map((site, index) => (
+              <motion.a
+                key={site.domain}
+                href={`https://${site.domain}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group cursor-pointer"
+              >
+                <HolographicCard delay={index * 0.15} className="text-center h-full">
+                  <motion.div
+                    className="w-20 h-20 rounded-3xl neon-glow flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
+                    style={{
+                      background: "var(--gradient-cyber)",
+                    }}
+                    animate={{
+                      rotateY: [0, 360],
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: index * 0.8,
+                    }}
+                  >
+                    <site.icon className="h-10 w-10 text-foreground relative z-10" />
+                  </motion.div>
 
-        {/* Marquee Effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-16 overflow-hidden"
-        >
-          <div className="flex animate-marquee whitespace-nowrap gap-8 text-sm text-muted-foreground/50">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="flex gap-8">
-                {ecosystemSites.map((site) => (
-                  <span key={`${i}-${site.domain}`} className="inline-block">
+                  <h3 className="text-xl font-bold mb-3 hologram">
                     {site.domain}
-                  </span>
-                ))}
-              </div>
+                  </h3>
+
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {t(site.descKey)}
+                  </p>
+
+                  <div className="flex items-center justify-center gap-2 text-sm neon-text">
+                    <span>Visitar</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </div>
+                </HolographicCard>
+              </motion.a>
             ))}
           </div>
-        </motion.div>
+
+          {/* Marquee Effect */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+            className="mt-16 overflow-hidden"
+          >
+            <div className="flex animate-marquee whitespace-nowrap gap-8 text-sm text-muted-foreground/50">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="flex gap-8">
+                  {ecosystemSites.map((site) => (
+                    <span key={`${i}-${site.domain}`} className="inline-block">
+                      {site.domain}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

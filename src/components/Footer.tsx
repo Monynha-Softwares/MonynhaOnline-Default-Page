@@ -20,7 +20,7 @@ export const Footer = () => {
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="py-16 border-t border-border/50 relative overflow-hidden"
+      className="py-16 border-t border-border/50 relative overflow-hidden bg-background/70 backdrop-blur-sm"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
