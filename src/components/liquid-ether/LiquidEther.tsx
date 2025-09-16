@@ -24,6 +24,11 @@ interface PointerState {
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
+const normalizeIntensity = (value: number) => {
+  const clamped = clamp(value, 0.5, 4);
+  return 0.75 + (clamped - 0.5) * 0.4;
+};
+
 const createColorParser = () => {
   const fallback: [number, number, number] = [124, 58, 237];
   const rgbCache = new Map<string, [number, number, number]>();
@@ -86,7 +91,7 @@ const createBlobs = (
   width: number,
   height: number,
   colors: string[],
-  autoIntensity: number
+  intensity: number
 ) => {
   const maxDimension = Math.max(width, height);
   const count = Math.max(8, colors.length * 4);
@@ -105,7 +110,7 @@ const createBlobs = (
       radius: baseRadius,
       color,
       offset: Math.random() * Math.PI * 2,
-      noise: 0.5 + Math.random() * 0.6 * autoIntensity,
+      noise: 0.35 + Math.random() * 0.45 * intensity,
     };
   });
 };
@@ -137,6 +142,7 @@ const LiquidEther = ({
     if (!context) return;
 
     const palette = colors.length > 0 ? colors : [...defaultLiquidEtherColors];
+    const intensity = normalizeIntensity(autoIntensity);
     const pointer: PointerState = {
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
@@ -148,7 +154,7 @@ const LiquidEther = ({
     let height = window.innerHeight;
     let scale = 1;
     let frame = 0;
-    let blobs = createBlobs(width, height, palette, autoIntensity);
+    let blobs = createBlobs(width, height, palette, intensity);
     let lastInteraction = performance.now();
     let lastTime = performance.now();
     const autoDelayMs = Math.max(0, autoResumeDelay);
@@ -176,7 +182,7 @@ const LiquidEther = ({
 
     const handleResize = () => {
       updateCanvasSize();
-      blobs = createBlobs(width, height, palette, autoIntensity);
+      blobs = createBlobs(width, height, palette, intensity);
     };
 
     const handlePointerMove = (event: PointerEvent) => {
@@ -217,7 +223,7 @@ const LiquidEther = ({
       const timeSinceInteraction = time - lastInteraction;
       if (autoDemo && timeSinceInteraction > autoDelayMs) {
         autoState.angle += delta * autoSpeed * Math.PI * 2;
-        const radius = Math.min(width, height) * 0.25 * autoIntensity;
+        const radius = Math.min(width, height) * 0.25 * intensity;
         const targetX = width / 2 + Math.cos(autoState.angle) * radius;
         const targetY = height / 2 + Math.sin(autoState.angle) * radius;
         const lerp = 1 - Math.exp(-delta / takeoverSeconds);
@@ -260,13 +266,14 @@ const LiquidEther = ({
         blob.vy += normalizedY * attraction * delta * 20;
 
         const swirlAngle = Math.atan2(dy, dx) + Math.PI / 2;
-        const swirlStrength = swirlFactor * pointer.strength * gaussian * autoIntensity;
+        const swirlStrength =
+          swirlFactor * pointer.strength * gaussian * intensity * 0.85;
         blob.vx += Math.cos(swirlAngle) * swirlStrength * 18 * delta;
         blob.vy += Math.sin(swirlAngle) * swirlStrength * 18 * delta;
 
         const noisePhase = timeSeconds * (0.6 + index * 0.03) + blob.offset;
-        blob.vx += Math.cos(noisePhase) * blob.noise * autoIntensity * delta * 15;
-        blob.vy += Math.sin(noisePhase * 0.8) * blob.noise * autoIntensity * delta * 15;
+        blob.vx += Math.cos(noisePhase) * blob.noise * intensity * delta * 12;
+        blob.vy += Math.sin(noisePhase * 0.8) * blob.noise * intensity * delta * 12;
 
         blob.vx *= damping;
         blob.vy *= damping;
@@ -307,7 +314,7 @@ const LiquidEther = ({
 
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.globalCompositeOperation = "source-over";
-      context.fillStyle = "rgba(6, 9, 20, 0.22)";
+      context.fillStyle = "rgba(6, 9, 20, 0.26)";
       context.fillRect(0, 0, width, height);
 
       context.globalCompositeOperation = "lighter";
@@ -320,8 +327,8 @@ const LiquidEther = ({
           blob.y,
           blob.radius
         );
-        gradient.addColorStop(0, colorToRgba(blob.color, 0.92));
-        gradient.addColorStop(0.45, colorToRgba(blob.color, 0.45));
+        gradient.addColorStop(0, colorToRgba(blob.color, 0.82));
+        gradient.addColorStop(0.45, colorToRgba(blob.color, 0.38));
         gradient.addColorStop(1, colorToRgba(blob.color, 0));
         context.fillStyle = gradient;
         context.beginPath();
@@ -330,7 +337,7 @@ const LiquidEther = ({
       });
 
       context.globalCompositeOperation = "soft-light";
-      context.fillStyle = "rgba(10, 12, 24, 0.18)";
+      context.fillStyle = "rgba(10, 12, 24, 0.24)";
       context.fillRect(0, 0, width, height);
       context.globalCompositeOperation = "source-over";
     };

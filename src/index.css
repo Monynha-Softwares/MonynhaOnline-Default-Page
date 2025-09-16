@@ -10,26 +10,26 @@ All colors MUST be HSL.
   :root {
     /* Base Colors - Deep Space */
     --background: 220 25% 3%;
-    --foreground: 220 10% 98%;
+    --foreground: 220 12% 94%;
 
     /* Glass & Cards - Holographic */
     --card: 220 20% 8%;
-    --card-foreground: 220 10% 95%;
+    --card-foreground: 220 12% 92%;
     --glass: 220 25% 12%;
 
     /* Popover */
     --popover: 220 20% 6%;
-    --popover-foreground: 220 10% 98%;
+    --popover-foreground: 220 12% 94%;
 
     /* Brand Colors - Neon Cyber */
     --primary: 280 95% 70%;
-    --primary-foreground: 220 10% 98%;
+    --primary-foreground: 220 12% 94%;
     --primary-glow: 290 100% 80%;
     --primary-dark: 280 85% 45%;
 
     /* Secondary - Cyber Pink */
     --secondary: 320 90% 65%;
-    --secondary-foreground: 220 10% 98%;
+    --secondary-foreground: 220 12% 94%;
     --secondary-glow: 330 100% 75%;
 
     /* Muted - Deep Purple */
@@ -48,7 +48,7 @@ All colors MUST be HSL.
 
     /* Destructive */
     --destructive: 0 85% 65%;
-    --destructive-foreground: 220 10% 98%;
+    --destructive-foreground: 220 12% 94%;
 
     /* Borders & Inputs */
     --border: 260 40% 25%;

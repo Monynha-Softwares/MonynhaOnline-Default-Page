@@ -42,12 +42,12 @@ const StaticGradient = ({ colors }: { colors: string[] }) => {
   }, [colors]);
 
   const background = useMemo(() => {
-    const primarySoft = colorWithAlpha(primary, 0.65);
-    const secondarySoft = colorWithAlpha(secondary, 0.55);
-    const accentSoft = colorWithAlpha(accent, 0.5);
-    const primaryGlow = colorWithAlpha(primary, 0.28);
-    const secondaryGlow = colorWithAlpha(secondary, 0.25);
-    const accentGlow = colorWithAlpha(accent, 0.22);
+    const primarySoft = colorWithAlpha(primary, 0.55);
+    const secondarySoft = colorWithAlpha(secondary, 0.45);
+    const accentSoft = colorWithAlpha(accent, 0.4);
+    const primaryGlow = colorWithAlpha(primary, 0.22);
+    const secondaryGlow = colorWithAlpha(secondary, 0.2);
+    const accentGlow = colorWithAlpha(accent, 0.18);
 
     return {
       backgroundImage: `radial-gradient(circle at 20% 25%, ${primaryGlow} 0%, transparent 55%),` +

@@ -128,7 +128,7 @@ export const getLiquidEtherSettings = (): LiquidEtherSettings => {
     0.3,
     0.6
   );
-  const autoIntensity = parseNumber(pickEnvValue(INTENSITY_KEYS), 2.2, {
+  const autoIntensity = parseNumber(pickEnvValue(INTENSITY_KEYS), 1.3, {
     min: 0.5,
     max: 6,
   });
