@@ -8,9 +8,9 @@ export const Header = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 p-4"
+      className="fixed top-0 left-0 right-0 z-40 p-4"
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
+      <div className="max-w-6xl mx-auto flex items-center justify-between rounded-2xl border border-white/10 bg-background/70 px-5 py-3 shadow-[0_20px_45px_rgba(16,18,35,0.35)] backdrop-blur-md">
         <motion.div
           initial={{ x: -30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
