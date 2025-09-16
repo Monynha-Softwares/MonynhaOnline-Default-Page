@@ -115,44 +115,51 @@ export const HeroSection = () => {
           <span className="text-muted-foreground">The heart of our infrastructure</span>
         </motion.div>
 
-        <motion.h1
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            duration: 0.8,
-            ease: "easeOut",
-            delay: 0.4
-          }}
-          className="text-6xl md:text-8xl font-bold mb-6 gradient-text"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          className="mx-auto mb-12 max-w-5xl rounded-3xl border border-border/40 bg-background/75 px-6 py-8 backdrop-blur-lg shadow-[0_0_60px_rgba(124,58,237,0.2)]"
         >
-          {t('heroTitle')}
-        </motion.h1>
+          <motion.h1
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              delay: 0.4
+            }}
+            className="text-6xl md:text-8xl font-bold mb-6 gradient-text"
+          >
+            {t('heroTitle')}
+          </motion.h1>
 
-        <motion.p
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.6
-          }}
-          className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed"
-        >
-          {t('heroSubtitle')}
-        </motion.p>
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.6
+            }}
+            className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed"
+          >
+            {t('heroSubtitle')}
+          </motion.p>
 
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ 
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.8
-          }}
-          className="text-lg text-muted-foreground/80 mb-12 max-w-2xl mx-auto"
-        >
-          {t('heroDescription')}
-        </motion.p>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.8
+            }}
+            className="text-lg text-muted-foreground/80 max-w-2xl mx-auto"
+          >
+            {t('heroDescription')}
+          </motion.p>
+        </motion.div>
 
         <motion.div
           initial={{ y: 20, opacity: 0 }}
