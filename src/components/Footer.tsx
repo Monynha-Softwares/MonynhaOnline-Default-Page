@@ -1,4 +1,5 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
 import { Heart, Github, Twitter, Globe } from "lucide-react";
 
@@ -49,7 +50,7 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               <motion.a
-                href="https://github.com/monynha"
+                href={LINKS.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -59,7 +60,7 @@ export const Footer = () => {
                 <Github className="h-4 w-4" />
               </motion.a>
               <motion.a
-                href="https://twitter.com/monynha"
+                href={LINKS.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -69,7 +70,7 @@ export const Footer = () => {
                 <Twitter className="h-4 w-4" />
               </motion.a>
               <motion.a
-                href="https://monynha.com"
+                href={LINKS.social.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -97,7 +98,7 @@ export const Footer = () => {
                 {t('ecosystem')}
               </button>
               <a
-                href="https://monynha.com/about"
+                href={LINKS.social.about}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-muted-foreground hover:text-primary transition-colors"
@@ -105,7 +106,7 @@ export const Footer = () => {
                 {t('about')}
               </a>
               <a
-                href="https://monynha.com/contact"
+                href={LINKS.social.contact}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-muted-foreground hover:text-primary transition-colors"
@@ -124,7 +125,7 @@ export const Footer = () => {
           >
             <h4 className="font-semibold mb-4 text-foreground">Admin</h4>
             <a
-              href="https://admin.monynha.online"
+              href={LINKS.admin.dashboard}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"

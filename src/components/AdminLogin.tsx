@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
 
 export const AdminLogin = () => {
@@ -19,7 +20,7 @@ export const AdminLogin = () => {
         asChild
       >
         <a
-          href="https://it.monynha.online"
+          href={LINKS.admin.itPortal}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Admin Login"

@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { LINKS } from "@/config/links";
 
 const NotFound = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const NotFound = () => {
           Oops! Page not found
         </p>
         <a
-          href="/"
+          href={LINKS.home}
           className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/20 px-6 py-2 text-sm font-semibold text-primary-foreground transition hover:border-primary hover:bg-primary/30"
         >
           Return to Home

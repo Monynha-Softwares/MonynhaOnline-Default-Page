@@ -139,7 +139,7 @@ export const getLiquidEtherSettings = (): LiquidEtherSettings => {
     resolution,
     autoIntensity,
     mouseForce: 20,
-    cursorSize: 100,
+    cursorSize: 80,
     isViscous: false,
     viscous: 30,
     iterationsViscous: 32,
