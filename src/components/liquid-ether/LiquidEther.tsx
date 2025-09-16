@@ -105,7 +105,7 @@ const createBlobs = (
       radius: baseRadius,
       color,
       offset: Math.random() * Math.PI * 2,
-      noise: 0.5 + Math.random() * 0.6 * autoIntensity,
+      noise: 0.35 + Math.random() * 0.4 * autoIntensity,
     };
   });
 };
@@ -307,7 +307,7 @@ const LiquidEther = ({
 
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.globalCompositeOperation = "source-over";
-      context.fillStyle = "rgba(6, 9, 20, 0.22)";
+      context.fillStyle = "rgba(6, 9, 20, 0.32)";
       context.fillRect(0, 0, width, height);
 
       context.globalCompositeOperation = "lighter";
@@ -320,8 +320,8 @@ const LiquidEther = ({
           blob.y,
           blob.radius
         );
-        gradient.addColorStop(0, colorToRgba(blob.color, 0.92));
-        gradient.addColorStop(0.45, colorToRgba(blob.color, 0.45));
+        gradient.addColorStop(0, colorToRgba(blob.color, 0.82));
+        gradient.addColorStop(0.45, colorToRgba(blob.color, 0.32));
         gradient.addColorStop(1, colorToRgba(blob.color, 0));
         context.fillStyle = gradient;
         context.beginPath();
@@ -330,7 +330,7 @@ const LiquidEther = ({
       });
 
       context.globalCompositeOperation = "soft-light";
-      context.fillStyle = "rgba(10, 12, 24, 0.18)";
+      context.fillStyle = "rgba(8, 10, 22, 0.26)";
       context.fillRect(0, 0, width, height);
       context.globalCompositeOperation = "source-over";
     };
