@@ -42,12 +42,12 @@ const StaticGradient = ({ colors }: { colors: string[] }) => {
   }, [colors]);
 
   const background = useMemo(() => {
-    const primarySoft = colorWithAlpha(primary, 0.65);
-    const secondarySoft = colorWithAlpha(secondary, 0.55);
-    const accentSoft = colorWithAlpha(accent, 0.5);
-    const primaryGlow = colorWithAlpha(primary, 0.28);
-    const secondaryGlow = colorWithAlpha(secondary, 0.25);
-    const accentGlow = colorWithAlpha(accent, 0.22);
+    const primarySoft = colorWithAlpha(primary, 0.5);
+    const secondarySoft = colorWithAlpha(secondary, 0.42);
+    const accentSoft = colorWithAlpha(accent, 0.38);
+    const primaryGlow = colorWithAlpha(primary, 0.2);
+    const secondaryGlow = colorWithAlpha(secondary, 0.18);
+    const accentGlow = colorWithAlpha(accent, 0.16);
 
     return {
       backgroundImage: `radial-gradient(circle at 20% 25%, ${primaryGlow} 0%, transparent 55%),` +
@@ -129,7 +129,7 @@ export const LiquidEtherClient = () => {
       ) : (
         <StaticGradient colors={settings.colors} />
       )}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(8,10,24,0.45),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(6,8,20,0.55),transparent_60%)]" />
     </div>
   );
 };
