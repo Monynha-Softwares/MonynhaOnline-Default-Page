@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="15" ry="15" fill="rgb(11, 95, 196)"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
-        font-family="sans-serif" font-weight="700" font-size="60" fill="white">M</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0 0h100v100H0z"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="8"><path d="M20 75V25m0 0 30 25m0 0 30-25m0 0v50"/><path stroke-width="6" d="M50 50v25"/></g><circle cx="20" cy="25" r="4" fill="#fff"/><circle cx="80" cy="25" r="4" fill="#fff"/><circle cx="50" cy="50" r="4" fill="#fff"/></svg>

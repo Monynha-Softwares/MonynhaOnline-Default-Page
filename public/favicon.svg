@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3C7BDF"/>
-      <stop offset="50%" stop-color="#8A5FD7"/>
-      <stop offset="100%" stop-color="#F46D31"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="8" fill="url(#grad)"/>
-  <path d="M16 48 V16 L32 32 L48 16 V48" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="28" y1="24" x2="28" y2="40" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-  <line x1="36" y1="24" x2="36" y2="40" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="a" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="hsl(280, 95%, 70%)"/><stop offset="50%" stop-color="hsl(320, 90%, 65%)"/><stop offset="100%" stop-color="hsl(180, 100%, 75%)"/></linearGradient><filter id="b"><feGaussianBlur result="coloredBlur" stdDeviation="2"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="64" height="64" fill="hsl(220, 25%, 3%)" rx="12"/><rect width="62" height="62" x="1" y="1" fill="none" stroke="url(#a)" stroke-width="2" filter="url(#b)" opacity=".6" rx="11"/><g fill="none" stroke-linecap="round" filter="url(#b)"><path stroke="url(#a)" stroke-width="4.5" d="M16 46V18"/><path stroke="url(#a)" stroke-width="4.5" d="m16 18 16 14"/><path stroke="url(#a)" stroke-width="4.5" d="m32 32 16-14"/><path stroke="url(#a)" stroke-width="4.5" d="M48 18v28"/><path stroke="hsl(180, 100%, 75%)" stroke-width="3" d="M32 32v14" opacity=".8"/></g><circle cx="16" cy="18" r="2.5" fill="hsl(280, 95%, 70%)" filter="url(#b)"/><circle cx="48" cy="18" r="2.5" fill="hsl(320, 90%, 65%)" filter="url(#b)"/><circle cx="32" cy="32" r="2.5" fill="hsl(180, 100%, 75%)" filter="url(#b)"/></svg>
