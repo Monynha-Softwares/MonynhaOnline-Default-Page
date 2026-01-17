@@ -1,9 +1,33 @@
+import { Suspense, lazy } from "react";
 import { Header } from "@/components/Header";
-import { HeroSection } from "@/components/HeroSection";
-import { WhatIsSection } from "@/components/WhatIsSection";
-import { EcosystemSection } from "@/components/EcosystemSection";
-import { InfrastructureSection } from "@/components/InfrastructureSection";
 import { Footer } from "@/components/Footer";
+
+const HeroSection = lazy(() =>
+  import("@/components/HeroSection").then((module) => ({
+    default: module.HeroSection,
+  }))
+);
+const WhatIsSection = lazy(() =>
+  import("@/components/WhatIsSection").then((module) => ({
+    default: module.WhatIsSection,
+  }))
+);
+const EcosystemSection = lazy(() =>
+  import("@/components/EcosystemSection").then((module) => ({
+    default: module.EcosystemSection,
+  }))
+);
+const InfrastructureSection = lazy(() =>
+  import("@/components/InfrastructureSection").then((module) => ({
+    default: module.InfrastructureSection,
+  }))
+);
+
+const SectionFallback = () => (
+  <div className="mx-auto max-w-6xl px-6 py-16 text-center text-sm text-muted-foreground">
+    Loading section...
+  </div>
+);
 
 const Index = () => {
   return (
@@ -11,10 +35,12 @@ const Index = () => {
       <div className="relative z-10 flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">
-          <HeroSection />
-          <WhatIsSection />
-          <EcosystemSection />
-          <InfrastructureSection />
+          <Suspense fallback={<SectionFallback />}>
+            <HeroSection />
+            <WhatIsSection />
+            <EcosystemSection />
+            <InfrastructureSection />
+          </Suspense>
         </main>
         <Footer />
       </div>
