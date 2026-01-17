@@ -169,7 +169,7 @@ export const HeroSection = () => {
             size="lg"
             onClick={scrollToEcosystem}
             variant="primary"
-            className="gap-2 text-lg"
+            className="gap-2 text-lg whitespace-nowrap min-w-[300px]"
           >
             {t('exploreCta')}
             <ArrowRight className="h-5 w-5" />
