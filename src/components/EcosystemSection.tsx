@@ -1,34 +1,42 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Code, Users, User } from "lucide-react";
 import { HolographicCard } from "./HolographicCard";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const ExternalLinkIcon = getIcon("ExternalLink");
+const GlobeIcon = getIcon("Globe");
+const CodeIcon = getIcon("Code");
+const UsersIcon = getIcon("Users");
+const UserIcon = getIcon("User");
 
 const ecosystemSites = [
   {
     ...LINKS.ecosystem.monynhaCom,
-    icon: Globe,
+    icon: GlobeIcon,
     descKey: 'monynhaComDesc' as const,
     color: "text-primary",
     bgColor: "bg-primary/10"
   },
   {
     ...LINKS.ecosystem.monynhaTech,
-    icon: Code,
+    icon: CodeIcon,
     descKey: 'monynahTechDesc' as const,
     color: "text-accent",
     bgColor: "bg-accent/10"
   },
   {
     ...LINKS.ecosystem.monynhaFun,
-    icon: Users,
+    icon: UsersIcon,
     descKey: 'monynhaFunDesc' as const,
     color: "text-primary-glow",
     bgColor: "bg-primary-glow/10"
   },
   {
     ...LINKS.ecosystem.monynhaMe,
-    icon: User,
+    icon: UserIcon,
     descKey: 'monynhaMeDesc' as const,
     color: "text-emerald-400",
     bgColor: "bg-emerald-400/10"
@@ -57,7 +65,12 @@ export const EcosystemSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             {t('ecosystemTitle')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p
+            className={cn(
+              "text-xl max-w-3xl mx-auto",
+              getStyle("mutedForeground").className
+            )}
+          >
             {t('ecosystemDescription')}
           </p>
         </motion.div>
@@ -94,13 +107,18 @@ export const EcosystemSection = () => {
                   {site.domain}
                 </h3>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p
+                  className={cn(
+                    "mb-6 leading-relaxed",
+                    getStyle("mutedForeground").className
+                  )}
+                >
                   {t(site.descKey)}
                 </p>
                 
                 <div className="flex items-center justify-center gap-2 text-sm neon-text">
                   <span>Visitar</span>
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLinkIcon className="h-4 w-4" />
                 </div>
               </HolographicCard>
             </motion.a>
@@ -115,7 +133,12 @@ export const EcosystemSection = () => {
           viewport={{ once: true }}
           className="mt-16 overflow-hidden"
         >
-          <div className="flex animate-marquee whitespace-nowrap gap-8 text-sm text-muted-foreground/50">
+          <div
+            className={cn(
+              "flex animate-marquee whitespace-nowrap gap-8 text-sm",
+              getStyle("mutedForegroundSoft").className
+            )}
+          >
             {[...Array(3)].map((_, i) => (
               <div key={i} className="flex gap-8">
                 {ecosystemSites.map((site) => (

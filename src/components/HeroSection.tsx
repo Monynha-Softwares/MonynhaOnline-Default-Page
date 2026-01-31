@@ -1,9 +1,15 @@
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
 import { CyberGrid } from "./CyberGrid";
 import { CyberButton } from "./CyberButton";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const ArrowRightIcon = getIcon("ArrowRight");
+const SparklesIcon = getIcon("Sparkles");
+const ZapIcon = getIcon("Zap");
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -68,7 +74,7 @@ export const HeroSection = () => {
           }}
           className="absolute bottom-1/3 left-1/3 w-6 h-6 neon-text transform-3d"
         >
-          <Zap className="w-full h-full" />
+          <ZapIcon className="w-full h-full" />
         </motion.div>
 
         {/* Additional 3D Elements */}
@@ -110,10 +116,15 @@ export const HeroSection = () => {
             ease: "easeOut",
             delay: 0.2
           }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 text-sm"
+          className={cn(
+            "inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm",
+            getStyle("glassCard").className
+          )}
         >
-          <Sparkles className="h-4 w-4 text-primary animate-glow-pulse" />
-          <span className="text-muted-foreground">The heart of our infrastructure</span>
+          <SparklesIcon className="h-4 w-4 text-primary animate-glow-pulse" />
+          <span className={getStyle("mutedForeground").className}>
+            The heart of our infrastructure
+          </span>
         </motion.div>
 
         <motion.h1
@@ -137,7 +148,10 @@ export const HeroSection = () => {
             ease: "easeOut",
             delay: 0.6
           }}
-          className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto leading-relaxed"
+          className={cn(
+            "text-xl md:text-2xl mb-4 max-w-3xl mx-auto leading-relaxed",
+            getStyle("mutedForeground").className
+          )}
         >
           {t('heroSubtitle')}
         </motion.p>
@@ -150,7 +164,10 @@ export const HeroSection = () => {
             ease: "easeOut",
             delay: 0.8
           }}
-          className="text-lg text-muted-foreground/80 mb-12 max-w-2xl mx-auto"
+          className={cn(
+            "text-lg mb-12 max-w-2xl mx-auto",
+            getStyle("mutedForegroundSoft").className
+          )}
         >
           {t('heroDescription')}
         </motion.p>
@@ -172,7 +189,7 @@ export const HeroSection = () => {
             className="gap-2 text-lg whitespace-nowrap min-w-[300px]"
           >
             {t('exploreCta')}
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRightIcon className="h-5 w-5" />
           </CyberButton>
 
           <CyberButton

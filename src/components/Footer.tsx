@@ -1,7 +1,14 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
-import { Heart, Github, Twitter, Globe } from "lucide-react";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const HeartIcon = getIcon("Heart");
+const GithubIcon = getIcon("Github");
+const TwitterIcon = getIcon("Twitter");
+const GlobeIcon = getIcon("Globe");
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -45,7 +52,12 @@ export const Footer = () => {
               </div>
               <span className="text-2xl font-bold gradient-text">Monynha</span>
             </div>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <p
+              className={cn(
+                "leading-relaxed mb-4",
+                getStyle("mutedForeground").className
+              )}
+            >
               {t('footerManifesto')}
             </p>
             <div className="flex items-center gap-4">
@@ -55,9 +67,9 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className={getStyle("iconButtonMuted").className}
               >
-                <Github className="h-4 w-4" />
+                <GithubIcon className="h-4 w-4" />
               </motion.a>
               <motion.a
                 href={LINKS.social.twitter}
@@ -65,9 +77,9 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className={getStyle("iconButtonMuted").className}
               >
-                <Twitter className="h-4 w-4" />
+                <TwitterIcon className="h-4 w-4" />
               </motion.a>
               <motion.a
                 href={LINKS.social.website}
@@ -75,9 +87,9 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className={getStyle("iconButtonMuted").className}
               >
-                <Globe className="h-4 w-4" />
+                <GlobeIcon className="h-4 w-4" />
               </motion.a>
             </div>
           </motion.div>
@@ -93,7 +105,7 @@ export const Footer = () => {
             <div className="space-y-3">
               <button
                 onClick={scrollToEcosystem}
-                className="block text-muted-foreground hover:text-primary transition-colors"
+                className={getStyle("mutedLinkBlock").className}
               >
                 {t('ecosystem')}
               </button>
@@ -101,7 +113,7 @@ export const Footer = () => {
                 href={LINKS.social.about}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-muted-foreground hover:text-primary transition-colors"
+                className={getStyle("mutedLinkBlock").className}
               >
                 {t('about')}
               </a>
@@ -109,7 +121,7 @@ export const Footer = () => {
                 href={LINKS.social.contact}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-muted-foreground hover:text-primary transition-colors"
+                className={getStyle("mutedLinkBlock").className}
               >
                 {t('contact')}
               </a>
@@ -128,7 +140,7 @@ export const Footer = () => {
               href={LINKS.admin.dashboard}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className={getStyle("mutedLink").className}
             >
               Área Administrativa
             </a>
@@ -144,15 +156,18 @@ export const Footer = () => {
           className="pt-8 border-t border-border/30 text-center"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+            <p className={getStyle("mutedForegroundSm").className}>
               {t('copyright').replace('2024', currentYear.toString())}
             </p>
             
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className={cn(
+                "flex items-center gap-2 text-sm",
+                getStyle("mutedLink").className
+              )}
             >
-              <Heart className="h-4 w-4" />
+              <HeartIcon className="h-4 w-4" />
               <span>Voltar ao topo</span>
             </button>
           </div>
