@@ -71,6 +71,12 @@ All colors MUST be HSL.
       hsl(var(--primary) / 0.8) 100%);
     
     /* Advanced Shadows & Effects */
+    --shadow-sm: 0 2px 6px hsl(220 20% 0% / 0.08);
+    --shadow-md: 0 6px 15px -2px hsl(220 20% 0% / 0.12);
+    --shadow-lg: 0 12px 28px -4px hsl(220 20% 0% / 0.18);
+    --shadow-depth-1: var(--shadow-sm);
+    --shadow-depth-2: var(--shadow-md);
+    --shadow-depth-3: var(--shadow-lg);
     --shadow-glow: 0 0 80px hsl(var(--primary) / 0.5), 0 0 120px hsl(var(--accent) / 0.3);
     --shadow-glass: 0 8px 32px hsl(220 20% 0% / 0.4), inset 0 1px 0 hsl(var(--primary) / 0.1);
     --shadow-cyber: 0 0 20px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--accent) / 0.6), 0 0 80px hsl(var(--secondary) / 0.4);
@@ -98,6 +104,12 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 220 10% 85%;
     --sidebar-border: 220 15% 20%;
     --sidebar-ring: 260 85% 65%;
+  }
+
+  .dark {
+    --shadow-depth-1: 0 2px 6px rgba(0, 0, 0, 0.2);
+    --shadow-depth-2: 0 6px 15px -2px rgba(0, 0, 0, 0.3);
+    --shadow-depth-3: 0 8px 24px -3px rgba(0, 0, 0, 0.4);
   }
 
   .light {
@@ -338,6 +350,36 @@ All colors MUST be HSL.
     25% { background-position: 100% 0%; }
     50% { background-position: 100% 100%; }
     75% { background-position: 0% 100%; }
+  }
+}
+
+@layer utilities {
+  .elevation-card {
+    @apply shadow-depth-1 transition-shadow duration-300;
+  }
+  .elevation-card:hover,
+  .elevation-card:focus {
+    @apply shadow-depth-2;
+  }
+
+  .elevation-hover {
+    @apply shadow-none transition-shadow duration-300;
+  }
+  .elevation-hover:hover,
+  .elevation-hover:focus {
+    @apply shadow-depth-1;
+  }
+
+  .elevation-dialog {
+    @apply shadow-depth-3;
+  }
+
+  .elevation-fab {
+    @apply shadow-depth-2 transition-shadow duration-300;
+  }
+  .elevation-fab:hover,
+  .elevation-fab:focus {
+    @apply shadow-depth-3;
   }
 }
 

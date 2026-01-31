@@ -132,6 +132,88 @@ All SVG assets use colors that match the CSS custom properties defined in `src/i
 --background: 220 25% 3%;
 ```
 
+## Elevation & Depth System
+
+The UI uses a progressive elevation system to communicate hierarchy and interactivity. The tokens live in `src/index.css` and are mapped to Tailwind utilities in `tailwind.config.ts`.
+
+### Depth Tokens
+
+Depth tokens build on standard shadow sizes for light mode and provide explicit overrides for dark mode.
+
+```css
+:root {
+  --shadow-sm: 0 2px 6px hsl(220 20% 0% / 0.08);
+  --shadow-md: 0 6px 15px -2px hsl(220 20% 0% / 0.12);
+  --shadow-lg: 0 12px 28px -4px hsl(220 20% 0% / 0.18);
+  --shadow-depth-1: var(--shadow-sm);
+  --shadow-depth-2: var(--shadow-md);
+  --shadow-depth-3: var(--shadow-lg);
+}
+
+.dark {
+  --shadow-depth-1: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-depth-2: 0 6px 15px -2px rgba(0, 0, 0, 0.3);
+  --shadow-depth-3: 0 8px 24px -3px rgba(0, 0, 0, 0.4);
+}
+```
+
+Tailwind exposes these as `shadow-depth-1`, `shadow-depth-2`, and `shadow-depth-3`, so you can use them directly or via the convenience utilities below.
+
+### Global Elevation Utilities
+
+Use the following CSS utilities (defined in `@layer utilities`) to apply consistent depth patterns without modifying component internals.
+
+```css
+.elevation-card {
+  @apply shadow-depth-1 transition-shadow duration-300;
+}
+.elevation-card:hover,
+.elevation-card:focus {
+  @apply shadow-depth-2;
+}
+
+.elevation-hover {
+  @apply shadow-none transition-shadow duration-300;
+}
+.elevation-hover:hover,
+.elevation-hover:focus {
+  @apply shadow-depth-1;
+}
+
+.elevation-dialog {
+  @apply shadow-depth-3;
+}
+
+.elevation-fab {
+  @apply shadow-depth-2 transition-shadow duration-300;
+}
+.elevation-fab:hover,
+.elevation-fab:focus {
+  @apply shadow-depth-3;
+}
+```
+
+### Usage Examples
+
+```tsx
+<div className="elevation-card rounded-lg bg-card p-4">
+  <PlaylistCard data={item} />
+</div>
+
+<button className="elevation-fab rounded-full bg-primary px-4 py-3 text-primary-foreground">
+  ➕
+</button>
+
+<DialogContent className="elevation-dialog">
+  ...
+</DialogContent>
+```
+
+### Accessibility Notes
+
+- When using `.elevation-card` or `.elevation-hover` on focusable elements, consider adding focus rings (e.g., `focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`) so keyboard users get a clear indicator in addition to the shadow.
+- Ensure dialog/popover containers also use the existing z-index utilities (`z-50` or similar) so visual elevation matches stacking order.
+
 ### Border Radius
 
 All assets use rounded corners matching the design system:
