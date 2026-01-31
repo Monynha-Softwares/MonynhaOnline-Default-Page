@@ -73,7 +73,10 @@ export default {
 			},
 			boxShadow: {
 				glow: 'var(--shadow-glow)',
-				glass: 'var(--shadow-glass)'
+				glass: 'var(--shadow-glass)',
+				'depth-1': 'var(--shadow-depth-1)',
+				'depth-2': 'var(--shadow-depth-2)',
+				'depth-3': 'var(--shadow-depth-3)'
 			},
 			backdropBlur: {
 				glass: 'var(--backdrop-blur)'
