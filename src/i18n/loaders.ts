@@ -1,10 +1,14 @@
 import type { Language, TranslationDictionary } from './types';
 
-const loaders: Record<Language, () => Promise<TranslationDictionary>> = {
-  pt: async () => (await import('./translations/pt.json')).default,
-  en: async () => (await import('./translations/en.json')).default,
-  fr: async () => (await import('./translations/fr.json')).default,
-  es: async () => (await import('./translations/es.json')).default
-};
+type TranslationLoader = () => Promise<{ default: TranslationDictionary }>;
 
-export const loadTranslations = (language: Language) => loaders[language]();
+const translationModules = import.meta.glob<TranslationLoader>('./translations/*.json');
+
+export const loadTranslations = async (language: Language): Promise<TranslationDictionary> => {
+  const loader = translationModules[`./translations/${language}.json`];
+  if (!loader) {
+    throw new Error(`Missing translations for language: ${language}`);
+  }
+  const module = await loader();
+  return module.default;
+};

@@ -1,13 +1,20 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
-import { CheckCircle, Zap, Shield, BarChart3, GitBranch } from "lucide-react";
 import { HolographicCard } from "./HolographicCard";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const ZapIcon = getIcon("Zap");
+const ShieldIcon = getIcon("Shield");
+const BarChart3Icon = getIcon("BarChart3");
+const GitBranchIcon = getIcon("GitBranch");
 
 const features = [
-  { icon: GitBranch, key: 'feature1' as const },
-  { icon: Zap, key: 'feature2' as const },
-  { icon: BarChart3, key: 'feature3' as const },
-  { icon: Shield, key: 'feature4' as const },
+  { icon: GitBranchIcon, key: 'feature1' as const },
+  { icon: ZapIcon, key: 'feature2' as const },
+  { icon: BarChart3Icon, key: 'feature3' as const },
+  { icon: ShieldIcon, key: 'feature4' as const },
 ];
 
 export const WhatIsSection = () => {
@@ -26,7 +33,12 @@ export const WhatIsSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             {t('whatIsTitle')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p
+            className={cn(
+              "text-xl max-w-3xl mx-auto",
+              getStyle("mutedForeground").className
+            )}
+          >
             {t('whatIsDescription')}
           </p>
         </motion.div>

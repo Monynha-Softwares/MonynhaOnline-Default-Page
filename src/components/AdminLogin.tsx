@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Lock } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { LINKS } from "@/config/links";
 import { motion } from "framer-motion";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const LockIcon = getIcon("Lock");
 
 export const AdminLogin = () => {
   const { t } = useLanguage();
@@ -16,7 +20,10 @@ export const AdminLogin = () => {
       <Button
         variant="ghost"
         size="sm"
-        className="opacity-70 hover:opacity-100 transition-opacity gap-2 text-muted-foreground hover:text-foreground"
+        className={cn(
+          "opacity-70 hover:opacity-100 transition-opacity gap-2",
+          getStyle("mutedForegroundHover").className
+        )}
         asChild
       >
         <a
@@ -25,7 +32,7 @@ export const AdminLogin = () => {
           rel="noopener noreferrer"
           aria-label="Admin Login"
         >
-          <Lock className="h-4 w-4" />
+          <LockIcon className="h-4 w-4" />
           <span className="hidden sm:inline">{t('adminLogin')}</span>
         </a>
       </Button>

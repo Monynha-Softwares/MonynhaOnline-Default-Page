@@ -3,17 +3,17 @@ import { loadTranslations } from '@/i18n/loaders';
 import {
   fallbackLanguage,
   languageStorageKey,
-  supportedLanguages,
   type Language,
   type TranslationDictionary,
   type TranslationKey
 } from '@/i18n/types';
+import { getSupportedLanguageCodes } from '@/flyweights/LanguageFlyweight';
 
 export const useLanguage = () => {
   const normalizeLanguage = (candidate: string | null): Language | null => {
     if (!candidate) return null;
     const languageCode = candidate.toLowerCase().split('-')[0];
-    return supportedLanguages.includes(languageCode as Language)
+    return getSupportedLanguageCodes().includes(languageCode as Language)
       ? (languageCode as Language)
       : null;
   };
@@ -88,6 +88,6 @@ export const useLanguage = () => {
     currentLanguage,
     changeLanguage,
     t,
-    languages: supportedLanguages
+    languages: getSupportedLanguageCodes()
   };
 };

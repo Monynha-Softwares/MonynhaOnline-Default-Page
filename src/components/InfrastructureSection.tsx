@@ -1,13 +1,19 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
-import { Server, Zap, Shield, Monitor } from "lucide-react";
-import { HolographicCard } from "./HolographicCard";
+import { getIcon } from "@/flyweights/IconFactory";
+import { getStyle } from "@/flyweights/StyleFlyweight";
+import { cn } from "@/lib/utils";
+
+const ServerIcon = getIcon("Server");
+const ZapIcon = getIcon("Zap");
+const MonitorIcon = getIcon("Monitor");
+const ShieldIcon = getIcon("Shield");
 
 const infraFeatures = [
-  { icon: Server, label: "Coolify Platform" },
-  { icon: Zap, label: "Static Builds" },
-  { icon: Monitor, label: "Next.js Export" },
-  { icon: Shield, label: "Secure Deploy" }
+  { icon: ServerIcon, label: "Coolify Platform" },
+  { icon: ZapIcon, label: "Static Builds" },
+  { icon: MonitorIcon, label: "Next.js Export" },
+  { icon: ShieldIcon, label: "Secure Deploy" }
 ];
 
 export const InfrastructureSection = () => {
@@ -26,7 +32,12 @@ export const InfrastructureSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
             {t('infraTitle')}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          <p
+            className={cn(
+              "text-xl max-w-4xl mx-auto leading-relaxed",
+              getStyle("mutedForeground").className
+            )}
+          >
             {t('infraDescription')}
           </p>
         </motion.div>
@@ -36,7 +47,10 @@ export const InfrastructureSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="glass-card p-8 max-w-4xl mx-auto"
+          className={cn(
+            "p-8 max-w-4xl mx-auto",
+            getStyle("glassCard").className
+          )}
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {infraFeatures.map((feature, index) => (
@@ -55,7 +69,9 @@ export const InfrastructureSection = () => {
                 <div className="w-12 h-12 rounded-xl bg-gradient-primary/20 flex items-center justify-center mx-auto mb-3">
                   <feature.icon className="h-6 w-6 text-primary" />
                 </div>
-                <span className="text-sm text-muted-foreground">{feature.label}</span>
+                <span className={getStyle("mutedForegroundSm").className}>
+                  {feature.label}
+                </span>
               </motion.div>
             ))}
           </div>
@@ -84,15 +100,21 @@ export const InfrastructureSection = () => {
         >
           <div className="text-center p-6 rounded-xl border border-border/50">
             <h4 className="font-semibold text-primary mb-2">Performance</h4>
-            <p className="text-sm text-muted-foreground">Otimizado para velocidade e disponibilidade máxima</p>
+            <p className={getStyle("mutedForegroundSm").className}>
+              Otimizado para velocidade e disponibilidade máxima
+            </p>
           </div>
           <div className="text-center p-6 rounded-xl border border-border/50">
             <h4 className="font-semibold text-accent mb-2">Automação</h4>
-            <p className="text-sm text-muted-foreground">Deploy contínuo com integração Git</p>
+            <p className={getStyle("mutedForegroundSm").className}>
+              Deploy contínuo com integração Git
+            </p>
           </div>
           <div className="text-center p-6 rounded-xl border border-border/50">
             <h4 className="font-semibold text-primary-glow mb-2">Monitoramento</h4>
-            <p className="text-sm text-muted-foreground">Observabilidade completa do ecossistema</p>
+            <p className={getStyle("mutedForegroundSm").className}>
+              Observabilidade completa do ecossistema
+            </p>
           </div>
         </motion.div>
       </div>
